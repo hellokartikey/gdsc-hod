@@ -6,9 +6,9 @@ Pharma - SLAs, Traceability & Safety
 
 1. dPharma etherium smart contract
     1. struct Nodes array:
-        * Hospital (0)
-        * Warehouses (1)
-        * Factory (2)
+        * (0) Hospital
+        * (1) Warehouses
+        * (2) Factory
     1. struct Stock:
         * serial
         * name
@@ -25,6 +25,7 @@ Pharma - SLAs, Traceability & Safety
     1. struct Order
         * Stock
         * price
+        * path array = (Node, time) # -1 for yet to reach
     1. order_no = unique id generated for each order placed
 
 1. Backend Flask and JS
