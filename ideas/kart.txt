@@ -1,0 +1,11 @@
+# Pharmaceutical Industry
+
+Industry that discovers, develops, produces, and markets drugs.
+
+# Service Level Agreement
+
+Agreement between service provider and client. Meaning that provider has to provide service to the customer as agreed in the contract.
+
+# SLA in Pharma
+https://www.rpact.com/services/sla
+
