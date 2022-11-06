@@ -5,7 +5,12 @@ Industry that discovers, develops, produces, and markets drugs.
 # Service Level Agreement
 
 Agreement between service provider and client. Meaning that provider has to provide service to the customer as agreed in the contract.
+https://en.wikipedia.org/wiki/Service-level_agreement
+https://link.springer.com/article/10.1007/s10586-021-03416-y
 
 # SLA in Pharma
 https://www.rpact.com/services/sla
+https://www.linkedin.com/pulse/service-level-agreement-sla-pharmacovigilance-rathod-b-pharma-pgdpm
+
+## Uniqueness
 
