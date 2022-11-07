@@ -1,19 +1,79 @@
 pragma solidity >=0.5.0 <0.9.0;
 
-import "./Structs.sol";
+// import "./Structs.sol";
 
 contract dPharma {
 
-    mapping (Node => Stock[]) total_stock;
-    mapping (address => mapping (uint => Order)) customer_map; // Orders for hospital
-    mapping (address => Order[]) manufacturer_map; // Orders for manufacturer
-
-    function updateOrder(address buy, address sell, uint order_no, uint index, uint days_elapsed) public {
-        cystomer_map[]
+    struct Node {
+        uint node_id;
+        address add;
+        uint ntype; // 0: Hospital, 1: Warehouse, 2: Factory
+        uint x;
+        uint y;
     }
 
-    function createOrder() public {}
+    struct Stock {
+        bytes32 serial;
+        string name;
+        Node location;
+        uint stype; // Stock type: Drug, Equipment, etc
+        uint qty;
+        uint ppu; // Price per unit
+        bool is_rx; // Requires prescription or not?
+        string batch;
+        string date; // yyyymmdd
+        uint expiry; // Days
+    }
+
+    struct Order {
+        uint order_id;
+        address buyer;
+        address seller;
+        Stock ostock;
+        uint price;
+        Node[] path;
+        uint[] status;
+    }
+
+    mapping (uint => Node) storage total_nodes; // Mapping of all available nodes (node_id => Node)
+    uint storage num_nodes;
+    mapping (uint => Stock[]) storage total_stock; // Mapping of Stocks stored at a particular Node (node_id => Stock[])
+
+    mapping (address => mapping (uint => Order)) storage customer_map; // Orders for hospital (address<hospital> => (order_id => Order))
+    uint storage num_orders;
+    mapping (address => Order[]) storage manufacturer_map; // Orders for manufacturer (address<manufacturer> => Order)
+
+    function updateOrder(address buy, uint order_no, uint xloc, uint yloc, uint days_elapsed) public {
+        for (uint i=0; i<customer_map[buy][order_no].path.length; i++) {
+            if ((customer_map[buy][order_no].path[i].x == xloc) && (customer_map[buy][order_no].path[i].y == yloc)) {
+                customer_map[buy][order_no].status[i] = days_elapsed;
+                break;
+            }
+        }
+    }
+
+    function fetchUser(address add) public view returns(uint){
+        for (uint i=0; i<num_nodes; i++) {
+            if (total_nodes[i].add == add) {
+                return total_nodes[i].ntype;
+            }
+        }
+        return 3;
+    }
+
+    function createOrder(address buyer, address seller, Stock ostock, Path[] path, ) public {}
 
     function createListing() public {}
+
+    function createNode(uint node_id, uint ntype, uint x, uint y) public {
+        Node storage new_node;
+        new_node.node_id = node_id;
+        new_node.add = msg.sender;
+        new_node.ntype = ntype;
+        new_node.x = x;
+        new_node.y = y;
+
+        total_nodes[++num_nodes] = new_node;
+    }
 
 }

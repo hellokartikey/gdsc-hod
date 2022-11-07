@@ -2,7 +2,9 @@ pragma solidity >=0.5.0 <0.9.0;
 
 contract Structs {
     struct Node {
-        uint ntype {}; // 0: Hospital, 1: Warehouse, 2: Factory
+        uint node_id;
+        address add;
+        uint ntype; // 0: Hospital, 1: Warehouse, 2: Factory
         uint x;
         uint y;
     }
@@ -21,6 +23,7 @@ contract Structs {
     }
 
     struct Order {
+        uint order_id;
         address buyer;
         address seller;
         Stock ostock;
