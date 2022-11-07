@@ -66,12 +66,7 @@ contract dPharma {
     function createListing() public {}
 
     function createNode(uint node_id, uint ntype, uint x, uint y) public {
-        Node storage new_node;
-        new_node.node_id = node_id;
-        new_node.add = msg.sender;
-        new_node.ntype = ntype;
-        new_node.x = x;
-        new_node.y = y;
+        Node storage new_node(node_id, msg.sender, ntype, x, y);
 
         total_nodes[++num_nodes] = new_node;
     }
