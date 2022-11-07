@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-only
 pragma solidity >=0.5.0 <0.9.0;
 
 // import "./Structs.sol";
@@ -61,9 +62,9 @@ contract dPharma {
         return 3;
     }
 
-    function createOrder(address buyer, address seller, Stock ostock, Path[] path, ) public {}
-
-    function createListing() public {}
+//     function createOrder(address buyer, address seller, Stock ostock, Path[] path, ) public {}
+//
+//     function createListing() public {}
 
     function createNode(uint node_id, uint ntype, uint x, uint y) public {
         total_nodes[num_nodes++] = Node(node_id, msg.sender, ntype, x, y);
