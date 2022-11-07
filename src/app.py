@@ -38,10 +38,25 @@ def login():
         # 2 = factory
         if user_type == 0:
             return url_for("hospital")
-        return Response(status=200)
+        elif user_type == 1:
+            return url_for("distributor")
+        elif user_type == 2:
+            return url_for("manufacturer")
+        else:
+            return Response(status=404)
 
 @app.route("/customer", methods=["GET","POST"])
 def hospital():
     if request.method == "GET":
         return render_template("hospital.html")
+
+@app.route("/distributor", methods=["GET","POST"])
+def distributor():
+    if request.method == "GET":
+        return render_template("distributor.html")
+
+@app.route("/manufacturer", methods=["GET","POST"])
+def manufacturer():
+    if request.method == "GET":
+        return render_template("manufacturer.html")
 
