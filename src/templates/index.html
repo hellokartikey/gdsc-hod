@@ -6,9 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/base.css') }}">
+    <style>
+        main{
+            height: 500px;
+            background-color: rgb(122, 89, 154);
+            display: flex;
+            align-items: center;
+            
+        }
+
+        #dapp-name-big{
+            font-size: 100px;
+            font-weight: bold;
+        }
+
+        .dapp-title-big{
+            position: relative;
+            left: 30px;
+        }
+
+        #dapp-name-d-big{
+            color: rgb(105, 105, 234);
+        }
+
+        #dapp-name-rest-big{
+            color: rgb(67, 71, 90);
+        }
+
+        #login, #register{
+            background-color: rgb(105, 105, 234);
+            outline: none;
+            border: 0;
+            font-family: 'Raleway', sans-serif;
+            padding: 20px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        #login{
+
+        }
+
+    </style>
 </head>
 
 <body>
+    <header>
+        <span id="dapp-name"><span id="dapp-name-d">d</span><span id="dapp-name-rest">Pharma</span></span>
+        <div class="links">
+            <span class="nav-link"><a href="#">About</a></span>
+            <span class="nav-link"><a href="#">Login</a></span>
+            <span class="nav-link"><a href="#">Register</a></span>
+        </div>
+    </header>
+    <!-- <img src="{{ url_for('static',filename='res/back.jpg') }}"> -->
+    <div id="main">
+        <span id="dapp-name-big"><span id="dapp-name-d-big">d</span><span id="dapp-name-rest-big">Pharma</span></span>
+        <span><i>Decentralized Pharma Supply Chain Management</i></span>
+    </div>
     <input type="button" value="Login with MetaMask" id="login">
     <input type="button" value="Register" id="register">
 </body>

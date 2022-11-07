@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    background-image: url('/static/res/back.jpg');
+    background-size: 150rem;
+    background-repeat: none;
+}
+
+header {
+    width: calc(100vw - 20px);
+    height: 50px;
+    font-weight: bold;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+#dapp-name {
+    font-size: 24px;
+}
+
+#dapp-name-d {
+    color: rgb(105, 105, 234);
+}
+
+#dapp-name-rest {
+    color: rgb(67, 71, 90);
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-link a {
+    color: rgb(67, 71, 90);
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+    justify-content: right;
+    align-items: center;
+    left: -40px;
+    position: relative;
+}

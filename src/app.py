@@ -7,17 +7,17 @@ import os
 app = Flask(__name__)
 
 # Env variables
-CONTRACT_PATH = os.environ.get("CONTRACT_PATH")
-RPC_URL = os.environ.get("RPC_URL")
-CONTRACT_ADDRESS = os.environ.get("CONTRACT_ADDRESS")
+# CONTRACT_PATH = os.environ.get("CONTRACT_PATH")
+# RPC_URL = os.environ.get("RPC_URL")
+# CONTRACT_ADDRESS = os.environ.get("CONTRACT_ADDRESS")
 
-w3 = Web3(Web3.HTTPProvider(RPC_URL))
-tf = json.load(open(CONTRACT_PATH))
-abi, bytecode = tf['abi'], tf['bytecode']
-contract_address = Web3.toChecksumAddress(CONTRACT_ADDRESS)
-contract = w3.eth.contract(abi=abi, bytecode=bytecode)
-# Contract instance
-contract_instance = w3.eth.contract(abi=abi, address=contract_address)
+# w3 = Web3(Web3.HTTPProvider(RPC_URL))
+# tf = json.load(open(CONTRACT_PATH))
+# abi, bytecode = tf['abi'], tf['bytecode']
+# contract_address = Web3.toChecksumAddress(CONTRACT_ADDRESS)
+# contract = w3.eth.contract(abi=abi, bytecode=bytecode)
+# # Contract instance
+# contract_instance = w3.eth.contract(abi=abi, address=contract_address)
 
 @app.route("/")
 def home():
@@ -31,7 +31,7 @@ def login():
         res = request.get_json(force=True)
         acc = res["account"]
         # Calling smart contract
-        user_type = contract_instance.functions.fetchUser(acc).call()
+        user_type = 3 # contract_instance.functions.fetchUser(acc).call()
         # user type
         # 0 = hospital
         # 1 = warehouse
