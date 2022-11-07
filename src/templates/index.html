@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <input type="button" value="Login with MetaMask" id="login">
+    <input type="button" value="Register" id="register">
+</body>
+<script>
+    document.querySelector("#login").addEventListener("click", async () => {
+        if (typeof window.ethereum !== 'undefined') {
+            let acc = await ethereum.request({ method: 'eth_requestAccounts' });
+            acc = acc[0];
+            console.log(acc);
+            let url = "http://127.0.0.1:5000/login"
+            await fetch(url, {
+                method: "POST",
+                credentials: "same-origin",
+                cors: "no-cors",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ "account": acc })
+            }).then((res) => {
+                window.location.href("/");
+            })
+        }
+    })
+</script>
+
+</html>
