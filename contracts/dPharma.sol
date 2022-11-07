@@ -35,13 +35,13 @@ contract dPharma {
         uint[] status;
     }
 
-    mapping (uint => Node) storage total_nodes; // Mapping of all available nodes (node_id => Node)
-    uint storage num_nodes;
-    mapping (uint => Stock[]) storage total_stock; // Mapping of Stocks stored at a particular Node (node_id => Stock[])
+    mapping (uint => Node) total_nodes; // Mapping of all available nodes (node_id => Node)
+    uint num_nodes;
+    mapping (uint => Stock[]) total_stock; // Mapping of Stocks stored at a particular Node (node_id => Stock[])
 
-    mapping (address => mapping (uint => Order)) storage customer_map; // Orders for hospital (address<hospital> => (order_id => Order))
-    uint storage num_orders;
-    mapping (address => Order[]) storage manufacturer_map; // Orders for manufacturer (address<manufacturer> => Order)
+    mapping (address => mapping (uint => Order)) customer_map; // Orders for hospital (address<hospital> => (order_id => Order))
+    uint num_orders;
+    mapping (address => Order[]) manufacturer_map; // Orders for manufacturer (address<manufacturer> => Order)
 
     function updateOrder(address buy, uint order_no, uint xloc, uint yloc, uint days_elapsed) public {
         for (uint i=0; i<customer_map[buy][order_no].path.length; i++) {
@@ -66,9 +66,7 @@ contract dPharma {
     function createListing() public {}
 
     function createNode(uint node_id, uint ntype, uint x, uint y) public {
-        Node storage new_node(node_id, msg.sender, ntype, x, y);
-
-        total_nodes[++num_nodes] = new_node;
+        total_nodes[num_nodes++] = Node(node_id, msg.sender, ntype, x, y);
     }
 
 }
